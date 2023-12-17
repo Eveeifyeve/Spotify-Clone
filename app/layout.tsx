@@ -25,6 +25,7 @@ export default async function RootLayout({
   const userSongs = await getSongsByUserId();
   return (
     <html lang="en">
+      <meta content="#10b981" data-react-helmet="true" name="theme-color" />
       <body className={font.className}>
         <ToasterProvider />
         <SupabaseProvider>

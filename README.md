@@ -2,6 +2,8 @@
 
 Made with Next.js, Tailwind, Stripe, ReduxUI, SupaBase, ZustLand.
 
+**Note Please don't signup or this demo will close.**
+
 [Demo Here](https://eveeifyeve-spotifyclone.vercel.app)
 
 Login details: 
