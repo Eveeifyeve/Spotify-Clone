@@ -8,8 +8,8 @@ import Input from "./Input";
 
 const SearchInput = () => {
   const router = useRouter();
-  const [value, setvalue] = useState<String>("");
-  const debouncedValue = useDebounce<String>(value, 500);
+  const [value, setvalue] = useState<string>("");
+  const debouncedValue = useDebounce<string>(value, 500);
 
   useEffect(() => {
     const query = { title: debouncedValue };
@@ -26,7 +26,7 @@ const SearchInput = () => {
     <Input
       placeholder="What do you want to listen to ?"
       value={value}
-      onChangeCapture={(e) => setvalue(e.target.value)}
+      onChangeCapture={(e) => setvalue((e.target as HTMLInputElement).value)}
     />
   );
 };
