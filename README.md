@@ -2,6 +2,13 @@
 
 Made with Next.js, Tailwind, Stripe, ReduxUI, SupaBase, ZustLand.
 
+[Demo Here]()
+
+Login details: 
+Email: test@exasmple.com
+Password: test
+
+
 # Disclaimer
 
 Note this may look like a copy it is not a copy of the real application [Spotify](https://spotify.com/) It has it's own database and api's and it's own code.
