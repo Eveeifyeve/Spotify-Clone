@@ -13,6 +13,10 @@ export default async function Home() {
       <Header>
         <div className="mb-2">
           <h1 className="text-white text-3xl font-semibold">Welcome Back</h1>
+          <h1 className="text-white text-2xl font-semibold">
+            PLEASE DO NOT LOGIN WITH YOUR ACCOUNT YOU CANNOT DELETE IT! THIS
+            WILL BE FIXED SOON BUT YOU HAVE BEEN WARNED!
+          </h1>
           <div className="grid  sm:grid-cols-2 xlgrid-cols-3 2xl:grid-cols-4 gap-3 mt-4">
             <ListItem
               name="Liked Songs"
