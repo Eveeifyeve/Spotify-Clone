@@ -9,31 +9,39 @@ const DeleteModel = () => {
   const supabase = useSupabaseClient();
   const { onClose, isOpen } = useDeleteModel();
 
-  // --------
-
   const handleDelete = async () => {
-    const { data: sessionData, error: sessionError } =
-      await supabase.auth.getSession();
+    try {
+      const { data: sessionData, error: sessionError } =
+        await supabase.auth.getSession();
 
-    if (sessionError && !sessionData) {
-      toast.error("Sorry we ran into an error.");
+      if (sessionError) throw sessionError.message;
+      if (!sessionData || !sessionData.session?.user)
+        throw "No session data or user found.";
+
+      const sessionUser = sessionData.session.user.id;
+      if (!sessionUser) throw "Current user not found.";
+
+      const { error: deleteSongsError } = await supabase
+        .from("songs")
+        .delete()
+        .eq("user_id", sessionUser);
+      if (deleteSongsError)
+        throw `Delete songs error: ${deleteSongsError.message}`;
+
+      const { error: deleteUserError } = await supabase
+        .from("users")
+        .delete()
+        .eq("id", sessionUser);
+      if (deleteUserError)
+        throw `Delete user error: ${deleteUserError.message}`;
+
+      await supabase.auth.admin.deleteUser(sessionUser)
+      await supabase.auth.signOut();
+      onClose();
+      return router.push("/");
+    } catch (error) {
+      toast.error(String(error));
     }
-
-    const currentUser = sessionData.session?.user.id;
-
-    if (!currentUser) {
-      toast.error("Current user not found.");
-      return;
-    }
-
-    await supabase.auth.signOut();
-
-    // Wait for the deletion operations to complete
-    await supabase.from("songs").delete().eq("user_id", currentUser);
-    await supabase.from("users").delete().eq("id", currentUser);
-    await supabase.auth.admin.deleteUser(currentUser);
-    onClose();
-    router.push("/");
   };
 
   return (
