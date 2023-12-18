@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import ListItem from "@/components/ListItem";
 import getSongs from "@/actions/getSongs";
 import PageContent from "@/components/PageContent";
+import likedImage from "../assets/Liked.png";
 
 export const revalidate = 0;
 
@@ -21,7 +22,7 @@ export default async function Home() {
             <ListItem
               name="Liked Songs"
               href="liked"
-              image="/images/liked.png"
+              image={likedImage.src}
             ></ListItem>
           </div>
         </div>
