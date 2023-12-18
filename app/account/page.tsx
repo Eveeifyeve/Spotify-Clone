@@ -1,4 +1,4 @@
-import DeleteAccount from "./components/deleteAccount";
+import DeleteAccount from "./components/DeleteAccount";
 
 export const revalidate = 0;
 

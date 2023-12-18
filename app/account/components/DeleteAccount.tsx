@@ -3,7 +3,6 @@
 import Button from "@/components/Button";
 import useDeleteModel from "@/hooks/useDeleteModel";
 
-const handleDelete = {};
 
 const DeleteAccountButton = () => {
   const { onOpen } = useDeleteModel();
